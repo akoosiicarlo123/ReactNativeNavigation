@@ -9,7 +9,7 @@ const HomeScreen = ({navigation}) => {
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
       <StatusBar barStyle={theme.dark ? 'light-content' : 'dark-content'} />
-      <Text>HomeScreen</Text>
+      <Text>HomeScreen 1213</Text>
       <Button
         title="Go to Details Screen"
         onPress={() => navigation.navigate('Details')}

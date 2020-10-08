@@ -1,9 +1,9 @@
 import React, {useState, useEffect, useMemo, useReducer} from 'react';
 import 'react-native-gesture-handler';
 import {
-  NavigationContainer, 
+  NavigationContainer,
   DefaultTheme as NavigationDefaultTheme,
-  DarkTheme as NavigationDarkTheme
+  DarkTheme as NavigationDarkTheme,
 } from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {View} from 'react-native-animatable';
@@ -28,7 +28,7 @@ const Drawer = createDrawerNavigator();
 const AppNavigator = () => {
   // const [isLoading, setIsLoading] = useState(true);
   // const [userToken, setUserToken] = useState(null);
-  const [isDarkTheme, setIsDarkTheme] = useState(false)
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   initalLoginState = {
     isLoading: true,
@@ -43,10 +43,10 @@ const AppNavigator = () => {
       ...NavigationDefaultTheme.colors,
       ...PaperDefaultTheme.colors,
       background: '#ffffff',
-      text: '#333333'
-    }
-  }
-  
+      text: '#333333',
+    },
+  };
+
   const CustomDarkTheme = {
     ...NavigationDarkTheme,
     ...PaperDarkTheme,
@@ -54,11 +54,11 @@ const AppNavigator = () => {
       ...NavigationDarkTheme.colors,
       ...PaperDarkTheme.colors,
       background: '#333333',
-      text: '#ffffff'
-    }
-  }
+      text: '#ffffff',
+    },
+  };
 
-  const theme = isDarkTheme ? CustomDarkTheme : CustomDefaultTheme
+  const theme = isDarkTheme ? CustomDarkTheme : CustomDefaultTheme;
 
   const loginReducer = (prevState, action) => {
     switch (action.type) {
@@ -98,10 +98,11 @@ const AppNavigator = () => {
       signIn: async (foundUser) => {
         // setUserToken('qwerty');
         // setIsLoading(false);
+        //  userToken = '';
         const userToken = String(foundUser[0].userToken);
         const userName = foundUser[0].username;
         try {
-        //  userToken = '';
+          //  userToken = '';
           await AsyncStorage.setItem('userToken', userToken);
         } catch (e) {
           console.log(e);
@@ -124,8 +125,8 @@ const AppNavigator = () => {
         setIsLoading(false);
       },
       toggleTheme: () => {
-        setIsDarkTheme(isDarkTheme => !isDarkTheme)
-      }
+        setIsDarkTheme((isDarkTheme) => !isDarkTheme);
+      },
     }),
     [],
   );
